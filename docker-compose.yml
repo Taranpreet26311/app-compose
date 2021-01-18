@@ -1,0 +1,28 @@
+version: '3'
+services:
+  flask1:
+    image: taran26311/flaskapp:latest
+    # build: flask1/ 
+    container_name: flask1
+    restart: always
+    ports:
+     - "5001:5000"
+    env_file:
+      - ./var.env
+    # environment:
+    #   - HOST=$HOST
+  flask2:
+    image: taran26311/anotherflaskapp:latest
+    # build: flask2/ 
+    container_name: flask2
+    restart: always
+    ports:
+     - "5002:5000"
+    env_file:
+      - ./var.env
+    # environment:
+    #   - HOST=$HOST
+  redis:
+    image: "redis:alpine"
+    ports:
+     - "6379:6379"
